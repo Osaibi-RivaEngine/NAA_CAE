@@ -87,10 +87,7 @@ export function useAuth() {
     isLoading.value = true;
     error.value = null;
     try {
-      const result = await acquireToken(
-        scopes ?? graphScopes.userRead,
-        "graph"
-      );
+      const result = await acquireToken(scopes ?? graphScopes.userRead);
       syncAccountState();
       return result.accessToken;
     } catch (e: unknown) {
