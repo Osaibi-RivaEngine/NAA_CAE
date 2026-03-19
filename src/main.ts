@@ -2,6 +2,16 @@ import { createApp } from "vue";
 import { createRouter, createMemoryHistory } from "vue-router";
 import App from "./App.vue";
 import { routes } from "./router";
+import { inspectTokenCache } from "./auth";
+
+/* ------------------------------------------------------------------ */
+/*  Debug utilities — expose to browser console                       */
+/* ------------------------------------------------------------------ */
+
+// Make cache inspector available in browser console for debugging
+if (typeof window !== "undefined") {
+  (window as any).inspectTokenCache = inspectTokenCache;
+}
 
 /* ------------------------------------------------------------------ */
 /*  Bootstrap Vue — wait for Office, then mount once                  */
